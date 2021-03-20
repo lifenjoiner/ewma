@@ -10,6 +10,8 @@ During the "warmup" stage, it uses a just-in-time `alpha` to get a more reasonab
 
 Just one form.
 
+[EWMA Comparisons](https://github.com/lifenjoiner/ewma/issues/1)
+
 ### Implementation
 
 https://github.com/lifenjoiner/ewma
