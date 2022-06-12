@@ -22,12 +22,12 @@ func TestEWMA(t *testing.T) {
 		if ewma.Value() != 1 {
 			t.Errorf("Value() is NOT 1: %v", ewma.Value())
 		}
-		if i <= slide {
+		if i < slide {
 			if ewma.count != i + 1 {
 				t.Errorf("%v: count = %v", i, ewma.count)
 			}
 		} else {
-			if ewma.count <= slide {
+			if ewma.count < slide {
 				t.Errorf("%v: count = %v", i, ewma.count)
 			}
 		}
@@ -37,12 +37,12 @@ func TestEWMA(t *testing.T) {
 	ewma = NewMovingAverage(slide)
 	v := rand.Float64()
 	ewma.Set(v)
-	if ewma.value != v || ewma.count <= slide {
+	if ewma.value != v || ewma.count < slide {
 		t.Errorf("Set(%v): value = %v, count = %v", v, ewma.value, ewma.count)
 	}
 	// Preset samples, Value()
-	var tests = [10]float64 {334, 373, 82, 141, 38, 443, 442, 397, 55, 60}
-	var ewmas = [10]float64 {334, 341, 294, 266, 225, 264, 297, 315, 268, 230}
+	var tests = [20]float64 {334, 373, 82, 141, 38, 443, 442, 397, 55, 60, 377, 401, 204, 419, 51, 217, 129, 238, 150, 341}
+	var ewmas = [20]float64 {334, 341, 294, 266, 225, 264, 297, 315, 268, 230, 257, 283, 269, 296, 251, 245, 224, 227, 213, 236}
 	ewma = NewMovingAverage(10)
 	ewma.Set(tests[0])
 	for i := 0; i < len(tests); i++ {

@@ -22,7 +22,7 @@ type EWMA struct {
 // Add a value to the series and update the moving average.
 func (a *EWMA) Add(value float64) {
 	switch {
-	case a.count <= a.slide:
+	case a.count < a.slide:
 		a.count++
 		a.decay = 2 / float64(a.count + 1)
 		a.value = a.value * (1 - a.decay) + value * a.decay
